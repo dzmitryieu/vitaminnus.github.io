@@ -1,0 +1,132 @@
+@media screen and (max-width: 1024px)  {
+  
+}
+    
+@media screen and (min-width: 768px) and (max-width: 1200px)  { 
+  .section__title{
+    font-size: 50px;   
+  }
+
+  .nav__item {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+
+  .section__title{
+    margin-top: 10px;
+  }
+
+  .logo_img {
+    max-width: 70px;
+  }
+
+  .game{    
+    background-size: cover;
+  }
+}
+    
+@media screen and (max-width: 767px)  { 
+  .section__title{
+    font-size: 32px;   
+  } 
+  
+  .nav__item {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+
+  .logo_img {
+    max-width: 80px;
+  }
+
+  .header__social {
+    display: none;
+  }
+
+  .header__menu {
+    display: none;    
+    background-color: #729c67;    
+    position: absolute;
+    right: 30px;
+    top: 50px;
+    z-index: 20;
+    border: 1px solid white;
+  }
+
+  .header {
+    padding-top: 0;
+  }
+
+  .nav__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav__link:before {
+    display: none;
+  }
+
+  .nav__item:hover {
+    transform: scale(1.1);
+    transition: all .3s;
+  }
+
+  .section__title{
+    margin-top: 10px;
+  }
+
+  .game{    
+    background-size: cover;
+  }
+
+  .content_title {
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+
+  .content_desc {
+    font-size: 21px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .content_item {
+    font-size: 16px;
+  }
+
+  .screenshots_section {    
+    background-size: cover;   
+  }
+
+  .screenshot_list {
+    display: grid;
+    grid-template-rows: auto auto auto; 
+    grid-template-columns: auto; 
+    grid-gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .wrapper {
+    padding-bottom: 600px;
+  }
+
+  .footer {
+    height: 600px;   
+    margin-top: -600px;
+  }
+
+  .footer__container {    
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto;    
+  }
+
+  .list {
+    display: block;    
+  }
+
+  .header::after {
+    display: none;
+  }
+}
