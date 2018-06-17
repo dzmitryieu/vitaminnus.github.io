@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="EN-en">
+<head>
+	<meta charset="UTF-8">
+	<title>Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/favicon.png"> 
+	 
+<link href="./css/main.css" rel="stylesheet"></head>
+
+<body>
+    
+    <div class="wrapper">  
+
+      <div class="player_hp invisible">
+        <p id="player_name" class="status_bar text_block small"></p>
+        <div class="progress_bar">
+          <div class="fullness">
+            <p id="player_health" class="status_bar text_block small">100 hp</p>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="monster_hp invisible">
+        <p id="monster_name" class="status_bar text_block small"></p>
+        <div class="progress_bar">
+          <div class="fullness">
+            <p id="monster_health" class="status_bar text_block small">100 hp</p>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="sound"></div>
+
+      <div class="fireball invisible"></div>
+      <div class="arrow invisible"></div>
+
+      <div class="your_turn invisible">
+        <p class="small">Your turn!<br>Click me!</p>
+      </div>
+
+      <div class="greeting">
+        <p>Glad to see you!</p>
+        <p>For beginning</p>
+        <p>enter, please, your name then click NEXT</p>
+        <form id="form">
+          <input class="input" autocomplete='given-name' name="firstname" type="text" placeholder="Enter your First Name" required>
+          <input class="input" autocomplete='family-name' name="lastname" type="text" placeholder="Enter your Last Name" required>
+          <input id="button_next" type="submit" value="NEXT">
+        </form>
+      </div>
+
+      <div id="hello" class="canvas invisible">
+        <div class="how_to_play">
+          <h2 class="title">How to play:</h2>
+          <p class="hello_text">The battle begins, the player and the monster have 100hp or more.</p>
+          <p class="hello_text">Spells can both deal damage and heal.</p>
+          <p class="hello_text">In the case of a successful solution of the task - the spell is applied</p>
+          <p class="hello_text">Otherwise - the transition to the monster.</p>
+          <p class="hello_text">If the player wins - the battle with the next monster.</p>
+          <p class="hello_text text_fail">With each new level, the strength of the monster rises</p>
+          <p class="hello_text">The arithmetic task solution will damage the monster in <span class="hello_text text_fail">15</span> hp</p>
+          <p class="hello_text">The D&D task solution will damage the monster in <span class="hello_text text_fail">25</span> hp</p>
+          <p class="hello_text">The translate task solution will damage the monster in <span class="hello_text text_fail">35</span> hp</p>
+          <p class="hello_text">The listening task solution will damage the monster in <span class="hello_text text_fail">40</span> hp</p>
+        </div>        
+      </div> 
+
+      <div id="play" class="canvas invisible">
+      </div> 
+
+      <div class="button new_game invisible">
+          <a href="" class="button__newgame">New game</a>
+      </div> 
+
+      <div class="level invisible">
+        <p>Level</p>
+        <p class="levelNumb"></p>
+      </div> 
+
+      <div class="ranking invisible">
+        <p>Congratulations!</p>
+        <p id="congratulations"></p>
+        <p>TOP-10 Ranking now:</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Player</th>
+              <th>Count monsters</th>
+            </tr>
+          </thead>
+          <tbody id="score_list">            
+          </tbody>
+        </table>
+      </div>
+
+      <div class="shadow invisible"></div>
+
+      <div class="player invisible"></div>
+
+      <div class="monster invisible">
+        <div class="weapon weapon-1"></div>
+        <div class="head head-1"></div>
+        <div class="body body-1"></div>
+        <div class="legs legs-1"></div>        
+      </div>
+
+      <div class="modal_window spellchoice invisible">
+        <div class="textchoice">Select a spell action:</div>
+        <div class="task">
+          <div class="taskbutton heal">
+            <img src="img/heal.png" alt="">
+            <p>heal</p>
+          </div>
+        </div>
+        <div class="task">
+          <div class="taskbutton damage">
+            <img src="img/damage.png" alt="">
+            <p>deal damage</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal_window taskchoice invisible">
+        <div class="textchoice">Choose a task</div>
+        <div class="task">
+          <div class="taskbutton arithmetic">
+            <p>arithmetic <br>15 hp</p>
+          </div>
+        </div>
+        <div class="task">
+          <div class="taskbutton translate">
+            <p>translate <br>35 hp</p>
+          </div>
+        </div>
+        <div class="task">
+          <div class="taskbutton dragndrop">
+            <p>dragndrop <br>25 hp</p>
+          </div>
+        </div>
+        <div class="task">
+          <div class="taskbutton speaktask">
+            <p>listening <br>40 hp</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal_window arithmetictask invisible">
+        <div class="text_block arithmetictask_text">
+          <p>Solve an arithmetic exercise:</p>
+          <p>fill in the empty field below</p>
+        </div>
+        <div class="task">
+          <div class="argument_block">
+            <input type="text" class="first_arg">
+          </div>
+        </div>
+        <div class="task">
+          <div class="argument_block">
+            <p class="sign">+</p>
+          </div>
+        </div>
+        <div class="task">
+          <div class="argument_block">
+            <input type="text" class="second_arg">
+          </div>
+        </div>
+        <div class="task">
+          <div class="argument_block">
+              <p class="egalite">=</p>
+          </div>
+        </div>
+        <div class="task">
+          <div class="argument_block">
+            <input type="text" class="arithmetic_result">
+          </div>
+        </div>
+        <div class="task submit_button">            
+          <div class="submit">
+            <button class="send">send</button>          
+          </div>
+        </div>
+      </div>
+
+      <div class="modal_window dragndroptask invisible">
+        <div class="text_block"><p>Put the letters in the correct order:</p></div>        
+        <div class="text_block text_ru invisible"></div>
+        <div class="text_block text_fail invisible"><p>Not right :( Answer is:</p></div>      
+        <div class="task">
+          <ul id="dragndrop_area">           
+          </ul>
+        </div>
+        <div class="task">            
+          <div class="submit">
+            <button class="send">send</button>          
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal_window translatetask invisible">
+        <div class="text_block"><p>Translate the word below into Russian:</p></div>
+        <div class="task">
+          <div class="text_block big question_word">
+            <p>smth word</p>
+          </div>
+        </div>
+        <div class="task">            
+          <div class="translate_area">
+            <p class="text_block">Your answer (in Russian):</p>
+            <input class="answer" type="text">             
+          </div>
+        </div>
+        <div class="task">            
+          <div class="submit">
+            <button class="send">send</button>          
+          </div>
+        </div>
+      </div>
+
+      <div class="modal_window speaktask_modal invisible">
+        <div class="text_block"><p>Write the word you will hear:</p></div>
+        <div class="task">
+          <div class="text_block buttonplay">            
+          </div>
+        </div>
+        <div class="task">            
+          <div class="speak_area">
+            <p class="text_block">Your answer (in English):</p>
+            <input class="answer" type="text">             
+          </div>
+        </div>
+        <div class="task">            
+          <div class="submit">
+            <button class="send">send</button>          
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="modal_window well_done invisible">
+        <div class="text_block"><p>Well done! You are right!!!</p></div>          
+      </div>
+
+      <div class="modal_window fail invisible">
+        <div class="text_block"><p>Unfortunately, this is not correct :(</p> </div>          
+      </div>
+
+      <div class="modal_window lose invisible">
+        <div id="lose_answer" class="text_block"><p>Unfortunately, you lose :(<br>Try again!</p></div>          
+      </div>
+
+      <div class="modal_window win invisible">
+        <div class="text_block"><p>You Win this monster!<br>Next Level!</p></div>          
+      </div>
+
+      <div class="modal_window monster_turn invisible">
+        <div class="text_block"><p>Please wait! Monster turn...</p></div>          
+      </div>
+
+      <div class="modal_window monster_stabs invisible">
+        <div class="text_block"><p>Monster attacks!</p></div>          
+      </div>
+
+      <div class="modal_window monster_wrong invisible">
+        <div class="text_block"><p>Monster wrong</p></div>          
+      </div>
+
+           
+         
+    </div>
+
+    <audio id="myaudio" autoplay loop>
+      <source src="sounds/summer.ogg"> 
+    </audio>
+    
+    <!-- <audio id="myaudio" src="sounds/summer.ogg" autoplay="true" volume="0"> -->
+<script type="text/javascript" src="main.bundle.js"></script></body>
+</html>
+
